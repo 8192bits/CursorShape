@@ -11,7 +11,6 @@ does not re-emit the ANSI cursor sequence after each render. This patch fixes
 that by modifying the ReallyRender() method in the PSReadLine DLL directly.
 
 ![demo](assets/Demo.PSReadLine2.4.5.gif)
----
 
 CURSOR SHAPES AVAILABLE
 -----------------------
@@ -47,8 +46,9 @@ Open PowerShell and run :
 
     Install-Module PSReadLine -RequiredVersion 2.4.5 -Force -SkipPublisherCheck -AllowClobber -Scope CurrentUser
     
-    Or else extract the Modules folder on PSReadLineOverride\PSReadLine-2.4.5\Modules into C:\Users\<YourName>\Documents\WindowsPowerShell\  
-    (create the folder WindowsPowerShell if not exist.)
+Or else extract the Modules folder on PSReadLineOverride\PSReadLine-2.4.5\Modules  
+into C:\Users\<YourName>\Documents\WindowsPowerShell\  
+(create the folder WindowsPowerShell if not exist.)
 
 Verify the installation :
 
@@ -64,24 +64,31 @@ Choose your cursor shape from the dll/ folder and copy it.
 
 FOR POWERSHELL 5.1 :
 
-    Copy the chosen DLL and rename it to :
-        Microsoft.PowerShell.PSReadLine.dll
- 
-    Paste it into :
-        C:\Users\<YourName>\Documents\WindowsPowerShell\Modules\PSReadLine\2.4.5\
-    (Replace the original or archive it)
+Copy the chosen DLL and rename it to :
 
-    In PowerShell type 
-        Unblock-File "$HOME\Documents\WindowsPowerShell\Modules\PSReadLine\2.4.5\Microsoft.PowerShell.PSReadLine.dll"
-    (to allow the execution of the dll)
+    Microsoft.PowerShell.PSReadLine.dll
+ 
+Paste it into :
+
+    C:\Users\<YourName>\Documents\WindowsPowerShell\Modules\PSReadLine\2.4.5\
     
+(Replace the original or archive it)
+
+In PowerShell type 
+
+    Unblock-File "$HOME\Documents\WindowsPowerShell\Modules\PSReadLine\2.4.5\Microsoft.PowerShell.PSReadLine.dll"
+    
+(to allow the execution of the dll)
+
+
+
 FOR POWERSHELL 7 :
 
-    Same step and Same DLL, paste it into :
-        C:\Users\<YourName>\Documents\PowerShell\Modules\PSReadLine\2.4.5\
+Same step and Same DLL, paste it into :
 
-    Note : Make sure PSReadLine 2.4.5 is installed (Step 2) before copying.
-
+    C:\Users\<YourName>\Documents\PowerShell\Modules\PSReadLine\2.4.5\
+    
+Note : Make sure PSReadLine 2.4.5 is installed (Step 2) before copying.
 
 
 STEP 4 - Set up your PowerShell profile
@@ -89,39 +96,49 @@ STEP 4 - Set up your PowerShell profile
 
 FOR POWERSHELL 5.1 :  
 
-    Allow the execution of .ps1 script  
-        Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
-        (type A for Yes to ALL)
-    
-    Test if you have $PROFILE
-        Test-Path $PROFILE
+Allow the execution of .ps1 script  
 
-    If return false type
-        New-Item -Type File -Path $PROFILE -Force
-    
-    Open your profile :
-        notepad $PROFILE
+    Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
 
-    Copy the content from:
-        PSReadLineOverride/profile/51/Microsoft.PowerShell_profile.ps1
+(type A for Yes to ALL)
+    
+Test if you have $PROFILE
+        
+    Test-Path $PROFILE
+
+If return false type
+
+    New-Item -Type File -Path $PROFILE -Force
+    
+Open your profile :
+    
+    notepad $PROFILE
+
+Copy the content from:
+
+    PSReadLineOverride/profile/51/Microsoft.PowerShell_profile.ps1
+
+or replace juste the file
+
+
 
 FOR POWERSHELL 7 :
 
-    Same step
+Same step
+Copy the content from :
     
-    Copy the content from :
         PSReadLineOverride/profile/7x/Microsoft.PowerShell_profile.ps1
 
 
 STEP 5 - Cursor setting
 --------------------------------------------
 
-    Close all open PowerShell windows and open a new one.
+Close all open PowerShell windows and open a new one.
     
-    In the Properties of your PowerShell shortcut (right-click title bar -> Properties)
-    go to Options tab and set the cursor shape to match your chosen DLL.
+In the Properties of your PowerShell shortcut (right-click title bar -> Properties)
+go to Options tab and set the cursor shape to match your chosen DLL.
 
-    Now your cursor shape is permanent; if you wish to change it, go to the step 3 and replace the .dll only.
+Now your cursor shape is permanent; if you wish to change it, go to the step 3 and replace the .dll only.
 
 ---
 
