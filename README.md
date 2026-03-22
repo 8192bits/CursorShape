@@ -1,4 +1,4 @@
-PSReadLineOverride
+CursorShape
 ==================
 This project patches PSReadLine 2.0.0 and 2.4.5 DLL's to support persistent custom cursor shapes
 in Windows PowerShell 5.1 and PowerShell 7.x running in conhost (legacy console).
