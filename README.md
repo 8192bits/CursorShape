@@ -26,30 +26,28 @@ The dll/ folder contains one patched DLL per cursor shape :
 ---
 INSTALLATION
 ------------
-
+Run powershell only once up to step 5
+---
 STEP 1 - Enable Virtual Terminal (VT) in the registry
 ------------------------------------------------------
-
-Run the .reg file from the registry/ folder :
-
-    console_PSVT.reg
-
-If you prefer to run it manually from Administrator PowerShell or cmd :
+Open PowerShell in admin and run :
 
     reg add HKCU\Console /v VirtualTerminalLevel /t REG_DWORD /d 1 /f
 
+Or run the .reg file from the registry/ folder :
+
+    console_PSVT.reg
 
 STEP 2 - Install PSReadLine 2.4.5
 ----------------------------------
-
-Open PowerShell and run :
+In PowerShell and run :
 
     Install-Module PSReadLine -RequiredVersion 2.4.5 -Force -SkipPublisherCheck -AllowClobber -Scope CurrentUser
 If the Nuget provider is required, accept with y
     
-Or else extract the Modules folder on PSReadLineOverride\PSReadLine-2.4.5\Modules  
-into C:\Users\<YourName>\Documents\WindowsPowerShell\  
-(create the folder WindowsPowerShell if not exist.)
+Or extract psreadline.2.4.5.zip in:  
+    
+    Expand-Archive "psreadline.2.4.5.zip" -DestinationPath "$HOME\Documents\WindowsPowerShell\Modules\PSReadLine\2.4.5" -Force
 
 Verify the installation :
 
@@ -60,7 +58,6 @@ You should see version 2.4.5 in your user modules folder.
 
 STEP 3 - Copy the patched DLL
 ------------------------------
-
 Choose your cursor shape from the dll/ folder and copy it.
 
 FOR POWERSHELL 5.1 :
@@ -73,7 +70,7 @@ Paste it into :
 
     C:\Users\<YourName>\Documents\WindowsPowerShell\Modules\PSReadLine\2.4.5\
     
-(Replace the original or archive it)
+(Remove the original or archive it)
 
 In PowerShell type 
 
@@ -94,7 +91,6 @@ Note : Make sure PSReadLine 2.4.5 is installed (Step 2) before copying.
 
 STEP 4 - Set up your PowerShell profile
 ---------------------------------------
-
 FOR POWERSHELL 5.1 :  
 
 Allow the execution of .ps1 script  
@@ -119,8 +115,6 @@ Copy the content from:
 
     PSReadLineOverride/profile/51/Microsoft.PowerShell_profile.ps1
 
-or replace juste the file
-
 
 
 FOR POWERSHELL 7 :
@@ -133,8 +127,7 @@ Copy the content from :
 
 STEP 5 - Cursor setting
 --------------------------------------------
-
-Close all open PowerShell windows and open a new one.
+Close the open PowerShell windows and open a new one.
     
 In the Properties of your PowerShell shortcut (right-click title bar -> Properties)
 go to Options tab and set the cursor shape to match your chosen DLL.
