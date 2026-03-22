@@ -146,17 +146,17 @@ Open your profile :
     
     notepad $PROFILE
 
-Copy the content from:
+Copy this line and save :
 
-    PSReadLineOverride/profile/51/Microsoft.PowerShell_profile.ps1
+    Import-Module "$HOME\Documents\WindowsPowerShell\Modules\PSReadLine\2.4.5\PSReadLine.psd1" -Force
 
 
 FOR POWERSHELL 7 :
 
 Same step
-Copy the content from :
+Copy this line and save :
     
-    PSReadLineOverride/profile/7x/Microsoft.PowerShell_profile.ps1
+    Import-Module "$HOME\Documents\PowerShell\Modules\PSReadLine\2.4.5\PSReadLine.psd1" -Force
 
 
 STEP 4 - Cursor setting
